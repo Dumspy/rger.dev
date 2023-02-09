@@ -18,62 +18,84 @@ import Icon from 'astro-icon'
     <Landing />
     <div class="h-screen bg-zinc-800 flex flex-col items-center">
       <div class="bg-green-400 w-5/6 h-2 top-16 rounded-2xl mt-8"></div>
-      <div class="h-full w-full flex flex-col lg:flex-row justify-center items-center">
-        <div class="w-1/2 lg:w-1/3">
-          <h1 class="text-zinc-200 text-2xl lg:text-6xl font-semibold my-2 lg:my-0 lg:mb-2">
-            About me
-          </h1>
-          <p class="text-zinc-200 text-base lg:text-2xl font-semibold">
-            I'm a software engineer based in London, UK. I'm currently working
-            at <a
-              href="https://www.uber.com/"
-              class="text-zinc-200 font-semibold underline"
-              >Uber</a
-            > as a Software Engineer on the <a
-              href="https://www.uber.com/en-GB/riders/"
-              class="text-zinc-200 font-semibold underline"
-              >Rider</a
-            > team.
-          </p>
+      <div
+        class="h-full w-full flex flex-col lg:flex-row lg:justify-center items-center"
+      >
+        <div class="w-1/2 lg:w-1/3 h-1/3 lg:h-auto flex flex-col justify-around lg:mx-8">
+          <div>
+            <h1
+              class="text-zinc-200 text-2xl lg:text-6xl font-semibold mb-2"
+            >
+              About me
+            </h1>
+            <p class="text-zinc-200 text-base lg:text-2xl">
+              I'm a software engineer based in London, UK. I'm currently working
+              at <a href="https://www.uber.com/" class="text-zinc-200 underline"
+                >Uber</a
+              > as a Software Engineer on the <a
+                href="https://www.uber.com/en-GB/riders/"
+                class="text-zinc-200 underline">Rider</a
+              > team.
+            </p>
+          </div>
         </div>
-        <div class="hidden lg:block lg:w-16">
-
-        </div>
-        <div class="w-1/2 lg:w-auto">
-          <h1 class="text-zinc-200 text-xl lg:text-4xl font-semibold my-2 lg:my-0 lg:mb-2">
-            Technologies i enjoy using
-          </h1>
-          <ul>
-            <li class="text-zinc-200 text-base lg:text-2xl flex">
-              <Icon pack="simple-icons" name="nodejs" class="w-5 text-nodejs mr-2" />
-              NodeJS
-            </li>
-            <li class="text-zinc-200 text-base lg:text-2xl flex">
-              <Icon pack="simple-icons" name="typescript" class="w-5 text-typescript mr-2" />
-              TypeScript
-            </li>
-            <li class="text-zinc-200 text-base lg:text-2xl flex">
-              <Icon pack="simple-icons" name="react" class="w-5 text-react mr-2" />
-              React
-            </li>
-          </ul>
-          <h1 class="text-zinc-200 text-xl lg:text-4xl font-semibold my-2">
-            Technologies i wanna learn
-          </h1>
-          <ul>
-            <li class="text-zinc-200 text-base lg:text-2xl flex">
-              <Icon name="trpc" class="w-5 text-trpc mr-2" />
-              tRPC
-            </li>
-            <li class="text-zinc-200 text-base lg:text-2xl flex">
-              <Icon pack="simple-icons" name="nextdotjs" class="w-5 text-nextjs mr-2" />
-              Next.js
-            </li>
-            <li class="text-zinc-200 text-base lg:text-2xl flex">
-              <Icon name="headlessui" class="w-5 text-headlessui mr-2" />
-              Headless UI
-            </li>
-          </ul>
+        <div class="w-1/2 lg:w-auto h-2/3 lg:h-auto flex flex-col justify-around lg:mx-8">
+          <div class="lg:my-8">
+            <h1
+              class="text-zinc-200 text-xl lg:text-4xl font-semibold mb-2"
+            >
+              Technologies i enjoy using
+            </h1>
+            <ul>
+              <li class="text-zinc-200 text-base lg:text-2xl flex">
+                <Icon
+                  pack="simple-icons"
+                  name="nodejs"
+                  class="w-5 text-nodejs mr-2"
+                />
+                NodeJS
+              </li>
+              <li class="text-zinc-200 text-base lg:text-2xl flex">
+                <Icon
+                  pack="simple-icons"
+                  name="typescript"
+                  class="w-5 text-typescript mr-2"
+                />
+                TypeScript
+              </li>
+              <li class="text-zinc-200 text-base lg:text-2xl flex">
+                <Icon
+                  pack="simple-icons"
+                  name="react"
+                  class="w-5 text-react mr-2"
+                />
+                React
+              </li>
+            </ul>
+          </div>
+          <div class="lg:my-8">
+            <h1 class="text-zinc-200 text-xl lg:text-4xl font-semibold mb-2">
+              Technologies i wanna learn
+            </h1>
+            <ul>
+              <li class="text-zinc-200 text-base lg:text-2xl flex">
+                <Icon name="trpc" class="w-5 text-trpc mr-2" />
+                tRPC
+              </li>
+              <li class="text-zinc-200 text-base lg:text-2xl flex">
+                <Icon
+                  pack="simple-icons"
+                  name="nextdotjs"
+                  class="w-5 text-nextjs mr-2"
+                />
+                Next.js
+              </li>
+              <li class="text-zinc-200 text-base lg:text-2xl flex">
+                <Icon name="headlessui" class="w-5 text-headlessui mr-2" />
+                Headless UI
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
