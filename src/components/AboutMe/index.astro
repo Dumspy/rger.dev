@@ -1,0 +1,87 @@
+---
+import Icon from 'astro-icon'
+---
+
+<div id="aboutme" class="h-screen bg-zinc-800 flex flex-col items-center">
+    <div class="bg-green-400 w-5/6 h-2 top-16 rounded-2xl mt-8"/>
+    <div
+      class="h-full w-full flex flex-col md:flex-row md:justify-center items-center"
+    >
+      <div class="w-1/2 md:w-1/3 h-1/3 md:h-auto flex flex-col justify-around md:mx-8">
+        <div>
+          <h1
+            class="text-zinc-200 text-2xl md:text-6xl font-semibold mb-2"
+          >
+            About me
+          </h1>
+          <p class="text-zinc-200 text-base md:text-2xl">
+            I'm a software engineer based in London, UK. I'm currently working
+            at <a href="https://www.uber.com/" class=" underline"
+              >Uber</a
+            > as a Software Engineer on the <a
+              href="https://www.uber.com/en-GB/riders/"
+              class="underline">Rider</a
+            > team.
+          </p>
+        </div>
+      </div>
+      <div class="w-1/2 md:w-auto h-2/3 md:h-auto flex flex-col justify-around md:mx-8">
+        <div class="md:my-8">
+          <h1
+            class="text-zinc-200 text-xl md:text-4xl font-semibold mb-2"
+          >
+            Technologies i enjoy using
+          </h1>
+          <ul>
+            <li class="text-zinc-200 text-base md:text-2xl flex">
+              <Icon
+                pack="simple-icons"
+                name="nodejs"
+                class="w-5 text-nodejs mr-2"
+              />
+              NodeJS
+            </li>
+            <li class="text-zinc-200 text-base md:text-2xl flex">
+              <Icon
+                pack="simple-icons"
+                name="typescript"
+                class="w-5 text-typescript mr-2"
+              />
+              TypeScript
+            </li>
+            <li class="text-zinc-200 text-base md:text-2xl flex">
+              <Icon
+                pack="simple-icons"
+                name="react"
+                class="w-5 text-react mr-2"
+              />
+              React
+            </li>
+          </ul>
+        </div>
+        <div class="md:my-8">
+          <h1 class="text-zinc-200 text-xl md:text-4xl font-semibold mb-2">
+            Technologies i wanna learn
+          </h1>
+          <ul>
+            <li class="text-zinc-200 text-base md:text-2xl flex">
+              <Icon name="trpc" class="w-5 text-trpc mr-2" />
+              tRPC
+            </li>
+            <li class="text-zinc-200 text-base md:text-2xl flex">
+              <Icon
+                pack="simple-icons"
+                name="nextdotjs"
+                class="w-5 text-nextjs mr-2"
+              />
+              Next.js
+            </li>
+            <li class="text-zinc-200 text-base md:text-2xl flex">
+              <Icon name="headlessui" class="w-5 text-headlessui mr-2" />
+              Headless UI
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
