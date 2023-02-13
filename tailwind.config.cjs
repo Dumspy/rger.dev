@@ -12,7 +12,7 @@ module.exports = {
         trpc: '#2596BE',
         nextjs: '#000000',
         headlessui: '#66E3FF',
-      }
+      },
     },
   },
   plugins: [],
