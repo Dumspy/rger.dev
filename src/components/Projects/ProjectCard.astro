@@ -2,18 +2,20 @@
 import { Icon } from 'astro-icon'
 
 interface Props {
-    Title: string
-    Description: string
-    Github?: string
-    Npm?: string
-    Link?: string
-    Tech: string[]
+  Title: string
+  Description: string
+  Github?: string
+  Npm?: string
+  Link?: string
+  Tech: string[]
 }
 
-const { Title, Description, Github, Npm, Link, Tech} = Astro.props
+const { Title, Description, Github, Npm, Link, Tech } = Astro.props
 ---
 
-<div class="w-2/3 h-1/5 rounded-sm bg-zinc-800 border-2 border-green-400 text-zinc-200">
+<div
+  class="w-2/3 h-1/5 rounded-sm bg-zinc-800 border-2 border-green-400 text-zinc-200"
+>
   <h3 class="font-semibold">{Title}</h3>
   <p>
     {Description}
