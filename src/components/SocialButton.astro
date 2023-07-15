@@ -3,18 +3,18 @@ import { Icon } from 'astro-icon'
 
 interface Props {
   platform: string
-  username: string
+  url: string
 }
 
-const { platform, username } = Astro.props
+const { platform, url } = Astro.props
 ---
 
 <a
-  href={`https://${platform}.com/${username}`}
+  href={url}
   aria-label={`Link to my ${platform} page`}
 >
   <Icon
-    name={`simple-icons:${platform}`}
+    name={`simple-icons:${platform.toLowerCase()}`}
     class="w-16 mx-2 text-zinc-900 hover:text-zinc-800"
   />
 </a>

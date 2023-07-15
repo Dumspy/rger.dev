@@ -1,5 +1,6 @@
 ---
-import SocialButton from './SocialButton.astro'
+import SocialButton from '../SocialButton.astro'
+import { constants } from '../../constants'
 ---
 
 <div id="landing" class="flex h-screen items-center flex-col lg:flex-row">
@@ -7,9 +8,11 @@ import SocialButton from './SocialButton.astro'
     class="w-full h-1/3 flex lg:h-full lg:w-1/3 items-end justify-center bg-green-400"
   >
     <div class="hidden lg:flex m-4">
-      <SocialButton platform="github" username="dumspy" />
-      <SocialButton platform="twitter" username="_dumspy" />
-      <SocialButton platform="linkedin" username="dumspy" />
+      {
+        constants.socials.map((platform) => (
+          <SocialButton platform={platform.title} url={platform.url} />
+        ))
+      }
     </div>
   </div>
   <picture
@@ -30,8 +33,8 @@ import SocialButton from './SocialButton.astro'
       <h1 class="text-4xl lg:text-6xl text-zinc-200 m-1 font-semibold">
         Felix Berger
       </h1>
-      <h2 class="text-lg lg:text-2xl text-zinc-400 m-1">
-        Full Stack Developer
+      <h2 class="text-lg lg:text-xl text-zinc-400 m-1">
+        {constants.job.title} at <a href={constants.job.employerUrl}>{constants.job.employer}</a>
       </h2>
       <div class="m-1">
         <a href="/cv.pdf">
@@ -40,10 +43,6 @@ import SocialButton from './SocialButton.astro'
             >CV</button
           >
         </a>
-        <!--<button
-          class="w-32 h-12 bg-green-400 rounded-md text-zinc-800 hover:bg-green-500"
-          >BUTTON 2</button
-        >-->
       </div>
     </div>
   </div>
