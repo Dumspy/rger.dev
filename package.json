@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "prettier --write --plugin-search-dir=. ."
+    "lint": "prettier --write --plugin-search-dir=. ./src"
   },
   "dependencies": {
     "@astrojs/tailwind": "^4.0.0",
