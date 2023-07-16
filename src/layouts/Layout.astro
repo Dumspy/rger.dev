@@ -1,9 +1,6 @@
 ---
-interface Props {
-  title: string
-}
+import { constants } from '../constants';
 
-const { title } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -15,9 +12,9 @@ const { title } = Astro.props
     <meta name="generator" content={Astro.generator} />
     <meta
       name="description"
-      content="Portfolio of Felix Berger - Software engineer - Full stack"
+      content=`Portfolio of ${constants.fullname} - ${constants.job.title} at ${constants.job.employer}`
     />
-    <title>{title}</title>
+    <title>Portfolio of {constants.fullname}</title>
   </head>
   <body>
     <slot />
