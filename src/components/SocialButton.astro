@@ -1,0 +1,20 @@
+---
+import { Icon } from 'astro-icon'
+
+interface Props {
+  platform: string
+  url: string
+}
+
+const { platform, url } = Astro.props
+---
+
+<a
+  href={url}
+  aria-label={`Link to my ${platform} page`}
+>
+  <Icon
+    name={`simple-icons:${platform.toLowerCase()}`}
+    class="w-8 text-zinc-200 hover:text-zinc-400"
+  />
+</a>
