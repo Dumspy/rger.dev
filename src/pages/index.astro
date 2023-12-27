@@ -1,9 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Landing from '../components/pages/landing.astro'
-import Footer from '../components/footer.astro'
+import SocialButton from '@components/SocialButton.astro'
+import { constants } from '../constants'
+import { Image } from 'astro:assets'
+import background from '@assets/background.jpg'
 ---
+
 <Layout>
-    <Landing />
-    <Footer />
+    <main class="bg-black">
+        <Image
+            src={background}
+            alt=""
+            class="w-screen h-screen object-cover opacity-50"
+            aria-hidden
+        />
+        <section class="absolute w-screen h-screen top-0 flex flex-col justify-center items-center text-zinc-200 gap-2">
+            <h1 class="text-4xl">{constants.fullname}</h1>
+            <h2>{constants.job.title}<a class="hover:text-zinc-400" href={constants.job.employerUrl}> @{constants.job.employer}</a></h2>
+            <section class="flex flex-row gap-2" aria-label="Group of links to external platforms">
+                {
+                    constants.socials.map((platform) => (
+                        <SocialButton
+                            platform={platform.title}
+                            url={platform.url}
+                        />
+                    ))
+                }
+            </section>
+        </section>
+    </main>
 </Layout>

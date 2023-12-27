@@ -1,16 +1,16 @@
 import { defineConfig } from 'astro/config';
-
 import tailwind from '@astrojs/tailwind';
-
-// https://astro.build/config
 import vercel from "@astrojs/vercel/serverless";
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
-  experimental: {
-    assets: true
-  },
+  integrations: [tailwind(), icon()],
   output: "server",
-  adapter: vercel()
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+    imageService: true,
+  }),
 });
