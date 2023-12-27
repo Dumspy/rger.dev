@@ -19,4 +19,4 @@ export const constants = {
             url: 'https://linkedin.com/in/f-berger/',
         },
     ],
-}
+} as const
