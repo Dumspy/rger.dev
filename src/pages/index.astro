@@ -1,18 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import SocialButton from '@components/SocialButton.astro'
+import Image from '@components/Image.astro'
 import { constants } from '../constants'
-import { Image } from 'astro:assets'
 import background from '@assets/background.jpg'
 ---
 
 <Layout>
     <main class="bg-black">
-        <Image
+        <Image 
             src={background}
-            alt=""
-            widths={[240, 540, 720, background.width]}
-            sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${background.width}px`}
+            alt=''
             class="w-screen h-screen object-cover opacity-50"
             aria-hidden
         />
