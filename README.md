@@ -1,3 +1,3 @@
-# astro-portfolio
+# rger.dev
 
-A simple portfolio made with astro and tailwindcss still wip
+A simple portfolio/personal site made with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/)https://tailwindcss.com/
