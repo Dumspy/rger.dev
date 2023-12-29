@@ -11,6 +11,8 @@ import background from '@assets/background.jpg'
         <Image
             src={background}
             alt=""
+            widths={[240, 540, 720, background.width]}
+            sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${background.width}px`}
             class="w-screen h-screen object-cover opacity-50"
             aria-hidden
         />
