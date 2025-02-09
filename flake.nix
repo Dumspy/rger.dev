@@ -14,9 +14,16 @@
   }:
     flake-utils.lib.eachDefaultSystem (
       system: let
-        pkgs = import nixpkgs {inherit system;};
+        pkgs = import nixpkgs { inherit system; };
       in {
-        devShell = pkgs.callPackage ./nix/devShell.nix {};
+        devShell = pkgs.mkShell rec {
+          name = "node";
+
+          packages = [
+            pkgs.nodejs_22
+            pkgs.nodePackages.pnpm
+          ];
+        };
       }
     );
 }
