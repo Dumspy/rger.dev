@@ -1,13 +1,13 @@
 import { defineConfig } from 'astro/config'
 import tailwind from '@astrojs/tailwind'
-import vercelStatic from '@astrojs/vercel/static'
+import vercel from '@astrojs/vercel'
 import icon from 'astro-icon'
 
 // https://astro.build/config
 export default defineConfig({
     integrations: [tailwind(), icon()],
     output: 'static',
-    adapter: vercelStatic({
+    adapter: vercel({
         webAnalytics: {
             enabled: true,
         },
