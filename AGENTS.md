@@ -1,24 +1,25 @@
 # Agent Guidelines for rger.dev
 
 ## Commands
+
+- **Dev**: `pnpm dev` or `pnpm start`
 - **Build**: `pnpm build`
-- **Dev**: `pnpm dev`
-- **Lint**: `pnpm lint` (runs Prettier auto-fix on src/)
+- **Lint/Format**: `pnpm lint` (runs Prettier on ./src)
+- **Preview**: `pnpm preview`
 - **No test suite configured**
 
 ## Code Style
-- **Formatter**: Prettier with single quotes, no semicolons
-- **Imports**: Use path aliases `@components/*` and `@assets/*` (configured in tsconfig.json)
-- **TypeScript**: Strict mode enabled (extends astro/tsconfigs/strict)
-- **Indentation**: 4 spaces (per .editorconfig)
-- **Formatting plugins**: Prettier Tailwind CSS plugin orders classes automatically
 
-## Astro Specifics
-- Component props use `interface Props` pattern with destructuring
-- Use Astro's built-in `Image` component wrapper for images
-- Constants stored in `src/constants.ts` and imported as named exports
+- **Formatting**: Prettier with semi:false, singleQuote:true, Tailwind CSS class sorting
+- **TypeScript**: Strict mode (astro/tsconfigs/strict), use path aliases (@components/_, @assets/_)
+- **Imports**: Use path aliases for components/assets, relative imports for same directory
+- **Types**: Define Props interfaces in Astro components with `interface Props`
+- **Naming**: camelCase for variables/functions, PascalCase for components
+- **Constants**: Use `as const` for readonly objects (see src/constants.ts)
+- **Astro**: Frontmatter first, then template; use semantic HTML and accessibility attributes
+- **Tailwind**: Use utility classes, extend theme in tailwind.config.cjs for custom colors
+- **No comments in code** unless documenting complex logic
 
-## Best Practices
-- Keep components simple and focused (this is a portfolio site)
-- Use Tailwind utility classes following the plugin ordering
-- Maintain accessibility attributes (aria-label, alt text)
+## Stack
+
+Astro 5, TypeScript, Tailwind CSS, Cloudflare Pages deployment, astro-icon for icons
