@@ -26,6 +26,11 @@
         "prettier-plugin-tailwindcss": "^0.7.2",
         "sharp": "^0.34.5",
         "typescript": "^5.9.3",
-        "wrangler": "^4.54.0"
+        "wrangler": "^4.59.1"
+    },
+    "pnpm": {
+        "overrides": {
+            "lodash": "4.17.23"
+        }
     }
 }
