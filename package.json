@@ -26,5 +26,11 @@
         "sharp": "^0.34.5",
         "typescript": "^5.9.3",
         "wrangler": "^4.59.3"
+    },
+    "pnpm": {
+        "overrides": {
+            "lodash": ">=4.17.23",
+            "undici": ">=7.18.2"
+        }
     }
 }
