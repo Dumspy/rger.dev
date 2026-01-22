@@ -12,27 +12,19 @@
     },
     "dependencies": {
         "@astrojs/cloudflare": "^12.6.12",
-        "@astrojs/tailwind": "^6.0.2",
         "@iconify-json/mdi": "^1.2.3",
-        "@types/node": "^25.0.9",
-        "astro": "^5.16.11",
+        "@tailwindcss/vite": "^4.1.18",
+        "astro": "^5.16.12",
         "astro-icon": "^1.1.5",
-        "tailwindcss": "^3.4.19",
-        "undici": "7.18.2"
+        "tailwindcss": "^4.1.18"
     },
     "devDependencies": {
         "@astrojs/check": "^0.9.6",
-        "prettier": "^3.8.0",
+        "prettier": "^3.8.1",
         "prettier-plugin-astro": "^0.14.1",
         "prettier-plugin-tailwindcss": "^0.7.2",
         "sharp": "^0.34.5",
         "typescript": "^5.9.3",
-        "wrangler": "^4.59.2"
-    },
-    "pnpm": {
-        "overrides": {
-            "lodash": "4.17.23",
-            "undici": "7.18.2"
-        }
+        "wrangler": "^4.59.3"
     }
 }

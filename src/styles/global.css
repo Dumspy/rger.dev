@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+
+@theme {
+    --color-nodejs: #339933;
+    --color-typescript: #3178c6;
+    --color-react: #61dafb;
+    --color-trpc: #2596be;
+    --color-nextjs: #000000;
+    --color-headlessui: #66e3ff;
+}

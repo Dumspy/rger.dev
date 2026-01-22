@@ -1,11 +1,14 @@
 import { defineConfig } from 'astro/config'
-import tailwind from '@astrojs/tailwind'
+import tailwindcss from '@tailwindcss/vite'
 import icon from 'astro-icon'
 import cloudflare from '@astrojs/cloudflare'
 
 // https://astro.build/config
 export default defineConfig({
-    integrations: [tailwind(), icon()],
+    vite: {
+        plugins: [tailwindcss()],
+    },
+    integrations: [icon()],
     output: 'static',
     adapter: cloudflare({
         imageService: 'compile',
