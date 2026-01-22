@@ -31,6 +31,7 @@
     },
     "pnpm": {
         "overrides": {
+            "lodash": "4.17.23",
             "undici": "7.18.2"
         }
     }
