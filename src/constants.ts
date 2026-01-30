@@ -18,5 +18,43 @@ export const constants = {
             title: 'Linkedin',
             url: 'https://linkedin.com/in/f-berger/',
         },
-    ],
-} as const
+    ] as const,
+    projects: [
+        {
+            name: 'dotfiles',
+            description:
+                'Personal dotfiles for NixOS and various development tools',
+            language: 'Nix',
+            stars: 0,
+            url: 'https://github.com/Dumspy/dotfiles',
+        },
+        {
+            name: 'auxbot',
+            description: 'TypeScript bot for auxiliary tasks',
+            language: 'TypeScript',
+            stars: 0,
+            url: 'https://github.com/Dumspy/auxbot',
+        },
+        {
+            name: 'auxlink',
+            description: 'Link management utility',
+            language: 'TypeScript',
+            stars: 0,
+            url: 'https://github.com/Dumspy/auxlink',
+        },
+        {
+            name: 'k8s-manifest',
+            description: 'Kubernetes manifests for deployment configurations',
+            language: 'YAML',
+            stars: 0,
+            url: 'https://github.com/Dumspy/k8s-manifest',
+        },
+        {
+            name: 'APRaidUtils',
+            description: 'Lua utility for addon development',
+            language: 'Lua',
+            stars: 0,
+            url: 'https://github.com/Dumspy/APRaidUtils',
+        },
+    ] as const,
+}

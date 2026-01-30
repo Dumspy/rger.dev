@@ -1,44 +1,227 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import SocialButton from '@components/SocialButton.astro'
-import Image from '@components/Image.astro'
+import ProjectCard from '@components/ProjectCard.astro'
+import { Icon } from 'astro-icon/components'
 import { constants } from '../constants'
-import background from '@assets/background.jpg'
 ---
 
 <Layout>
-    <main class="bg-black">
-        <Image
-            src={background}
-            alt=""
-            class="w-screen h-screen object-cover opacity-50"
-            aria-hidden
-        />
-        <section
-            class="absolute w-screen h-screen top-0 flex flex-col justify-center items-center text-zinc-200 gap-2"
+    <main class="min-h-screen relative overflow-hidden">
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-dark via-dark to-[#0a0a0f]"
         >
-            <h1 class="text-4xl">{constants.fullname}</h1>
-            <h2>
-                {constants.job.title}<a
-                    class="hover:text-zinc-400"
-                    href={constants.job.employerUrl}
-                >
-                    @{constants.job.employer}</a
-                >
-            </h2>
+        </div>
+
+        <div
+            class="absolute inset-0 opacity-[0.02]"
+            style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"
+        >
+        </div>
+
+        <div
+            class="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"
+        >
+        </div>
+        <div
+            class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-light/10 rounded-full blur-[120px]"
+        >
+        </div>
+
+        <div class="relative z-10">
             <section
-                class="flex flex-row gap-2"
-                aria-label="Group of links to external platforms"
+                class="min-h-screen flex flex-col justify-center items-center px-6 view-transition-section"
+                data-transition="fade-up"
             >
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1
+                        class="text-5xl md:text-7xl font-display font-bold text-zinc-100 mb-6 animate-float"
+                    >
+                        {constants.fullname}
+                    </h1>
+                    <p class="text-xl md:text-2xl text-zinc-400 mb-8">
+                        <span class="gradient-text font-semibold"
+                            >{constants.job.title}</span
+                        >
+                        {' '}
+                        <span>at</span>
+                        {' '}
+                        <a
+                            href={constants.job.employerUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-zinc-300 hover:text-primary transition-colors underline decoration-zinc-700 underline-offset-4"
+                        >
+                            {constants.job.employer}
+                        </a>
+                    </p>
+                    <section
+                        class="flex flex-row gap-6 justify-center"
+                        aria-label="Group of links to external platforms"
+                    >
+                        {
+                            constants.socials.map((platform) => (
+                                <SocialButton
+                                    platform={platform.title}
+                                    url={platform.url}
+                                />
+                            ))
+                        }
+                    </section>
+                    <div class="mt-16">
+                        <a
+                            href="#projects"
+                            class="inline-flex items-center gap-2 text-zinc-500 hover:text-primary transition-colors animate-bounce"
+                        >
+                            <span class="text-sm">View Projects</span>
+                            <Icon name="mdi:arrow-down" class="w-5 h-5" />
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                id="about"
+                class="py-32 px-6 max-w-4xl mx-auto view-transition-section"
+                data-transition="fade-up"
+            >
+                <div class="glass-card p-8 md:p-12 rounded-2xl glow-effect">
+                    <h2
+                        class="text-3xl md:text-4xl font-display font-semibold gradient-text mb-6"
+                    >
+                        About Me
+                    </h2>
+                    <div class="space-y-4 text-zinc-400 leading-relaxed">
+                        <p>
+                            I'm a passionate developer focused on building
+                            modern, efficient applications. Currently working as
+                            a Student Developer at Monsido, I'm constantly
+                            learning and experimenting with new technologies.
+                        </p>
+                        <p>
+                            My work spans from personal projects to open-source
+                            contributions, with a particular interest in
+                            TypeScript, Nix, and cloud-native technologies. I
+                            believe in clean code, thoughtful architecture, and
+                            continuous improvement.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                id="projects"
+                class="py-32 px-6 max-w-6xl mx-auto view-transition-section"
+                data-transition="fade-up"
+            >
+                <h2
+                    class="text-3xl md:text-4xl font-display font-semibold text-center gradient-text mb-16"
+                >
+                    Featured Projects
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    {
+                        constants.projects.map((project) => (
+                            <ProjectCard
+                                name={project.name}
+                                description={project.description}
+                                language={project.language}
+                                stars={project.stars}
+                                url={project.url}
+                            />
+                        ))
+                    }
+                </div>
                 {
-                    constants.socials.map((platform) => (
-                        <SocialButton
-                            platform={platform.title}
-                            url={platform.url}
-                        />
-                    ))
+                    constants.projects.length > 0 && (
+                        <div class="text-center mt-12">
+                            <a
+                                href="https://github.com/Dumspy?tab=repositories"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-primary/30 text-primary hover:bg-primary/10 transition-all duration-300"
+                            >
+                                <span>View All Projects</span>
+                                <Icon name="mdi:arrow-right" class="w-5 h-5" />
+                            </a>
+                        </div>
+                    )
                 }
             </section>
-        </section>
+
+            <section
+                id="contact"
+                class="py-32 px-6 max-w-4xl mx-auto view-transition-section"
+                data-transition="fade-up"
+            >
+                <div
+                    class="glass-card p-8 md:p-12 rounded-2xl text-center glow-effect"
+                >
+                    <h2
+                        class="text-3xl md:text-4xl font-display font-semibold gradient-text mb-6"
+                    >
+                        Let's Connect
+                    </h2>
+                    <p class="text-zinc-400 mb-8 max-w-lg mx-auto">
+                        I'm always interested in hearing about new projects,
+                        opportunities, or just having a chat about tech.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        {
+                            constants.socials.map((platform) => (
+                                <a
+                                    href={platform.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="px-6 py-3 rounded-lg border border-zinc-700 text-zinc-300 hover:border-primary hover:text-primary transition-all duration-300 flex items-center gap-2"
+                                >
+                                    <Icon
+                                        name={`mdi:${platform.title.toLowerCase()}`}
+                                        class="w-5 h-5"
+                                    />
+                                    <span>{platform.title}</span>
+                                </a>
+                            ))
+                        }
+                    </div>
+                </div>
+            </section>
+
+            <footer class="py-8 text-center text-zinc-600 text-sm">
+                <p>
+                    © {new Date().getFullYear()}
+                    {constants.fullname}. Built with Astro.
+                </p>
+            </footer>
+        </div>
     </main>
+
+    <script is:inline>
+        if ('viewTransitionName' in document.documentElement.style) {
+            document.documentElement.style.viewTransitionName = 'root'
+        }
+    </script>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px',
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('view-transition-enter-active')
+                    entry.target.classList.remove('view-transition-enter')
+                }
+            })
+        }, observerOptions)
+
+        document
+            .querySelectorAll('[data-transition="fade-up"]')
+            .forEach((section) => {
+                section.classList.add('view-transition-enter')
+                observer.observe(section)
+            })
+    </script>
 </Layout>
