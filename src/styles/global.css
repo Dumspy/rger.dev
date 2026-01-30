@@ -1,10 +1,119 @@
 @import 'tailwindcss';
 
 @theme {
-    --color-nodejs: #339933;
+    /* Digital Craftsman Color Palette */
+    --color-cream: #faf9f6;
+    --color-cream-dark: #f5f3ef;
+    --color-ink: #1a1a1a;
+    --color-ink-light: #2d2d2d;
+    --color-stone: #8b8680;
+    --color-stone-light: #b5b0aa;
+    --color-copper: #b87333;
+    --color-copper-light: #d4a574;
+    --color-paper: #fefcfa;
+
+    /* Syntax/tech accent colors */
     --color-typescript: #3178c6;
+    --color-go: #00add8;
+    --color-lua: #000080;
+    --color-nix: #5277c3;
+    --color-cpp: #00599c;
     --color-react: #61dafb;
-    --color-trpc: #2596be;
-    --color-nextjs: #000000;
-    --color-headlessui: #66e3ff;
+
+    /* Typography */
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-mono: 'Source Code Pro', 'Fira Code', monospace;
+    --font-body: system-ui, -apple-system, sans-serif;
+}
+
+/* Base styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+}
+
+/* View transition animations */
+::view-transition-old(root) {
+    animation: fade-out 0.3s ease-out forwards;
+}
+
+::view-transition-new(root) {
+    animation: fade-in 0.4s ease-out forwards;
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-cream-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-stone-light);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-stone);
+}
+
+/* Typography utilities */
+.font-display {
+    font-family: var(--font-display);
+}
+
+.font-mono {
+    font-family: var(--font-mono);
+}
+
+/* Selection styling */
+::selection {
+    background-color: var(--color-copper-light);
+    color: var(--color-ink);
+}
+
+/* Focus styles */
+:focus-visible {
+    outline: 2px solid var(--color-copper);
+    outline-offset: 2px;
+}
+
+/* Smooth image loading */
+img {
+    transition: opacity 0.3s ease;
+}
+
+img[loading] {
+    opacity: 0;
+}
+
+img:not([loading]) {
+    opacity: 1;
 }

@@ -1,22 +1,40 @@
 ---
+import { ClientRouter } from 'astro:transitions'
 import { constants } from '../constants'
 import '../styles/global.css'
+
+interface Props {
+    title?: string
+    description?: string
+}
+
+const { title, description } = Astro.props
+const pageTitle = title
+    ? `${title} | ${constants.fullname}`
+    : `${constants.fullname} — ${constants.job.title}`
+const pageDescription =
+    description ||
+    `Portfolio of ${constants.fullname} — ${constants.job.title} at ${constants.job.employer}`
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" transition:animate="none">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
-        <meta
-            name="description"
-            content=`Portfolio of ${constants.fullname} - ${constants.job.title} at ${constants.job.employer}`
+        <meta name="description" content={pageDescription} />
+        <title>{pageTitle}</title>
+        <ClientRouter />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Code+Pro:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
         />
-        <title>Portfolio of {constants.fullname}</title>
     </head>
-    <body>
+    <body class="bg-cream text-ink antialiased">
         <slot />
     </body>
 </html>

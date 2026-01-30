@@ -1,44 +1,260 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import SocialButton from '@components/SocialButton.astro'
-import Image from '@components/Image.astro'
+import ProjectCard from '@components/ProjectCard.astro'
 import { constants } from '../constants'
-import background from '@assets/background.jpg'
+import { Icon } from 'astro-icon/components'
+
+interface Project {
+    id: string
+    name: string
+    description: string
+    language: string
+    languageColor: string
+    url: string
+    featured?: boolean
+}
+
+const featuredProjects: Project[] = constants.projects.filter(
+    (p: Project) => p.featured,
+)
+const otherProjects: Project[] = constants.projects.filter(
+    (p: Project) => !p.featured,
+)
 ---
 
 <Layout>
-    <main class="bg-black">
-        <Image
-            src={background}
-            alt=""
-            class="w-screen h-screen object-cover opacity-50"
-            aria-hidden
-        />
+    <main class="min-h-screen">
+        {/* Hero Section */}
         <section
-            class="absolute w-screen h-screen top-0 flex flex-col justify-center items-center text-zinc-200 gap-2"
+            class="relative flex min-h-[85vh] flex-col justify-center px-6 py-24 md:px-12 lg:px-24"
         >
-            <h1 class="text-4xl">{constants.fullname}</h1>
-            <h2>
-                {constants.job.title}<a
-                    class="hover:text-zinc-400"
-                    href={constants.job.employerUrl}
+            <div class="max-w-4xl">
+                {/* Tag */}
+                <div class="mb-8 flex items-center gap-3">
+                    <span class="h-px w-8 bg-copper"></span>
+                    <span
+                        class="font-mono text-xs uppercase tracking-widest text-stone"
+                        >Student Developer</span
+                    >
+                </div>
+
+                {/* Main Headline */}
+                <h1
+                    class="font-display text-5xl font-medium leading-[1.1] text-ink md:text-7xl lg:text-8xl"
+                    transition:animate="fade"
                 >
-                    @{constants.job.employer}</a
+                    {constants.fullname}
+                </h1>
+
+                {/* Subheadline */}
+                <p
+                    class="mt-6 max-w-xl text-lg leading-relaxed text-stone md:text-xl"
                 >
-            </h2>
-            <section
-                class="flex flex-row gap-2"
-                aria-label="Group of links to external platforms"
-            >
-                {
-                    constants.socials.map((platform) => (
-                        <SocialButton
-                            platform={platform.title}
-                            url={platform.url}
-                        />
-                    ))
-                }
-            </section>
+                    Building thoughtful software at
+                    <a
+                        href={constants.job.employerUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-copper underline-offset-4 hover:underline"
+                    >
+                        {constants.job.employer}
+                    </a>
+                    . Passionate about developer experience, automation, and clean
+                    code.
+                </p>
+
+                {/* Social Links */}
+                <div class="mt-10 flex items-center gap-6">
+                    {
+                        constants.socials.map(
+                            (social: { title: string; url: string }) => (
+                                <a
+                                    href={social.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="group flex items-center gap-2 text-sm text-stone transition-colors hover:text-ink"
+                                >
+                                    <Icon
+                                        name={`mdi:${social.title.toLowerCase()}`}
+                                        class="h-5 w-5"
+                                    />
+                                    <span class="font-mono text-xs uppercase tracking-wider">
+                                        {social.title}
+                                    </span>
+                                </a>
+                            ),
+                        )
+                    }
+                </div>
+            </div>
+
+            {/* Scroll indicator */}
+            <div class="absolute bottom-12 left-6 md:left-12 lg:left-24">
+                <div class="flex flex-col items-center gap-2 text-stone-light">
+                    <span
+                        class="font-mono text-[10px] uppercase tracking-widest rotate-90 origin-center translate-x-[-50%]"
+                        >Scroll</span
+                    >
+                    <div
+                        class="mt-4 h-16 w-px bg-gradient-to-b from-copper to-transparent"
+                    >
+                    </div>
+                </div>
+            </div>
         </section>
+
+        {/* Featured Projects Section */}
+        <section
+            class="border-t border-stone/10 bg-cream-dark px-6 py-24 md:px-12 lg:px-24"
+        >
+            <div class="max-w-6xl">
+                {/* Section Header */}
+                <div class="mb-12 flex items-end justify-between">
+                    <div>
+                        <span
+                            class="mb-2 block font-mono text-xs uppercase tracking-widest text-copper"
+                            >Selected Work</span
+                        >
+                        <h2
+                            class="font-display text-3xl font-medium text-ink md:text-4xl"
+                        >
+                            Featured Projects
+                        </h2>
+                    </div>
+                    <a
+                        href="https://github.com/Dumspy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hidden items-center gap-2 text-sm text-stone transition-colors hover:text-ink md:flex"
+                    >
+                        <span>View all on GitHub</span>
+                        <Icon name="mdi:arrow-right" class="h-4 w-4" />
+                    </a>
+                </div>
+
+                {/* Projects Grid */}
+                <div class="grid gap-6 md:grid-cols-2">
+                    {
+                        featuredProjects.map(
+                            (project: Project, index: number) => (
+                                <div
+                                    style={`animation-delay: ${index * 100}ms`}
+                                    class="project-card"
+                                >
+                                    <ProjectCard project={project} />
+                                </div>
+                            ),
+                        )
+                    }
+                </div>
+
+                {/* Mobile GitHub Link */}
+                <div class="mt-8 md:hidden">
+                    <a
+                        href="https://github.com/Dumspy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center justify-center gap-2 rounded-lg border border-stone/20 py-3 text-sm text-stone transition-colors hover:border-copper/30 hover:text-ink"
+                    >
+                        <span>View all on GitHub</span>
+                        <Icon name="mdi:arrow-right" class="h-4 w-4" />
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        {/* Other Projects */}
+        {
+            otherProjects.length > 0 && (
+                <section class="px-6 py-24 md:px-12 lg:px-24">
+                    <div class="max-w-6xl">
+                        <div class="mb-8">
+                            <span class="mb-2 block font-mono text-xs uppercase tracking-widest text-stone">
+                                More Work
+                            </span>
+                            <h2 class="font-display text-2xl font-medium text-ink">
+                                Other Projects
+                            </h2>
+                        </div>
+
+                        <div class="grid gap-4 md:grid-cols-2">
+                            {otherProjects.map((project: Project) => (
+                                <a
+                                    href={project.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="group flex items-center justify-between border-b border-stone/10 py-4 transition-colors hover:border-copper/30"
+                                >
+                                    <div>
+                                        <h3 class="font-medium text-ink group-hover:text-copper transition-colors">
+                                            {project.name}
+                                        </h3>
+                                        <p class="mt-1 text-sm text-stone">
+                                            {project.description}
+                                        </p>
+                                    </div>
+                                    <Icon
+                                        name="mdi:arrow-top-right"
+                                        class="h-5 w-5 text-stone-light transition-all group-hover:text-copper group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                    />
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )
+        }
+
+        {/* Footer */}
+        <footer class="border-t border-stone/10 px-6 py-12 md:px-12 lg:px-24">
+            <div class="max-w-6xl">
+                <div
+                    class="flex flex-col items-center justify-between gap-4 md:flex-row"
+                >
+                    <p class="font-mono text-xs text-stone-light">
+                        © {new Date().getFullYear()}
+                        {constants.fullname}. Crafted with Astro & Tailwind.
+                    </p>
+                    <div class="flex items-center gap-6">
+                        {
+                            constants.socials.map(
+                                (social: { title: string; url: string }) => (
+                                    <a
+                                        href={social.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="text-stone-light transition-colors hover:text-ink"
+                                        aria-label={social.title}
+                                    >
+                                        <Icon
+                                            name={`mdi:${social.title.toLowerCase()}`}
+                                            class="h-5 w-5"
+                                        />
+                                    </a>
+                                ),
+                            )
+                        }
+                    </div>
+                </div>
+            </div>
+        </footer>
     </main>
 </Layout>
+
+<style>
+    .project-card {
+        opacity: 0;
+        animation: slide-up 0.6s ease-out forwards;
+    }
+
+    @keyframes slide-up {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

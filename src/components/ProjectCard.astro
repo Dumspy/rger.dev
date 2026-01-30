@@ -1,0 +1,61 @@
+---
+interface Props {
+    project: {
+        id: string
+        name: string
+        description: string
+        language: string
+        languageColor: string
+        url: string
+        featured?: boolean
+    }
+}
+
+const { project } = Astro.props
+---
+
+<a
+    href={project.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="group relative block overflow-hidden rounded-lg border border-stone/10 bg-paper p-6 transition-all duration-300 hover:border-copper/30 hover:shadow-lg"
+>
+    <div
+        class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+    >
+    </div>
+
+    <div class="relative">
+        <div class="mb-3 flex items-center justify-between">
+            <h3
+                class="font-display text-xl font-medium text-ink group-hover:text-copper transition-colors"
+            >
+                {project.name}
+            </h3>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-stone transition-all duration-300 group-hover:text-copper group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width={1.5}
+                    d="M7 17L17 7M17 7H7M17 7V17"></path>
+            </svg>
+        </div>
+
+        <p class="mb-4 text-sm leading-relaxed text-stone">
+            {project.description}
+        </p>
+
+        <div class="flex items-center gap-2 text-xs font-mono text-stone-light">
+            <span
+                class="h-2 w-2 rounded-full"
+                style={`background-color: ${project.languageColor}`}></span>
+            <span>{project.language}</span>
+        </div>
+    </div>
+</a>
